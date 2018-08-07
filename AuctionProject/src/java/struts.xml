@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.custom.i18n.resources" value="ApplicationResources"/>
+    <package name="default" extends="struts-default">
+                
+        <action name="GetBidder" class="com.tc.dto.Bidders" method="getBidder">
+            <result name="success">UpdateEmployee.jsp</result>
+            <result name="failure">Failure.jsp</result>
+        </action>
+        
+        <action name="updateBidder" class="com.tc.dto.Bidders" method="updateBidder">
+            <result name="success">BiddersInfo.jsp</result>
+            <result name="failure">Failure.jsp</result>
+            <result name="nosession">NoSession.jsp</result>            
+        </action>
+        
+        <action name="setBid" class="com.tc.dto.AuctionProduct" method="setBids">
+            <result name="success">AuctionPage.jsp</result>
+            <result name="failure">Failure.jsp</result>
+<!--            <result name="nosession">NoSession.jsp</result>-->
+        </action>
+        
+        <action name="getAuction" class="com.tc.dto.AuctionProduct" method="getFullAuctionDetails">
+            <result name="success">AuctionPage.jsp</result>
+            <result name="failure">Failure.jsp</result>
+        </action> 
+        
+<!--        <action name="Login" class="com.tc.dto.Bidders" method="loginBidders">
+            <result name="success">BiddersInfo.jsp</result>
+            <result name="failure">Failure.jsp</result>
+        </action>  -->
+        <action name="Login" class="com.tc.dto.Login" method="loginCheck">
+            <result name="Bidder">BiddersInfo.jsp</result>
+            <result name="Supplier">SupplierInfo.jsp</result>
+            <result name="failure">Failure.jsp</result>
+        </action> 
+        
+<!--        <action name="Role" class="com.tc.dto.Bidders" method="roleFunction">
+            <result name="success">Login.jsp</result>
+            <result name="failure">Failure.jsp</result>
+        </action> -->
+        
+        <action name="Role" class="com.tc.dto.Role" method="roleFunction">
+            <result name="success">Login.jsp</result>
+            <result name="failure">Failure.jsp</result>
+        </action> 
+        
+        <action name="biddersInfo" class="com.tc.dto.Bidders" method="biddersInfo">
+            <result name="success">BiddersInfo.jsp</result>
+            <result name="failure">Failure.jsp</result>
+        </action> 
+        
+        <action name="Logoff" class="com.tc.dto.Bidders" method="logOff">
+            <result name="success">HomePage.jsp</result>
+            <result name="failure">Failure.jsp</result>
+        </action> 
+        
+        <action name="auctionDetail" class="com.tc.dto.Auction" method="getAuctionDetails">
+            <result name="success">AllAuctionDetails.jsp</result>
+            <result name="failure">Failure.jsp</result>
+        </action>     
+    </package>
+</struts>    

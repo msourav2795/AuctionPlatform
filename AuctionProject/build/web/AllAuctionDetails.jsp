@@ -1,14 +1,14 @@
 <%-- 
-    Document   : ShowAllEmployee.jsp
-    Created on : 12 Jun, 2015, 12:09:20 PM
-    Author     : techcluster001
+    Document   : AllAuctionDetails
+    Created on : Jul 26, 2018, 8:38:45 PM
+    Author     : msour
 --%>
 
-<%@page import="com.tc.dto.Suppliers"%>
+
+<%@page import="com.tc.dto.AuctionProduct"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>  
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 
@@ -19,93 +19,48 @@
     <meta name="author" content="">
     <link rel="icon" href="./images/favicon.ico">
 
-    <title>Supplier Info</title>
+    <title>Auction Details</title>
 
     <!-- Bootstrap core CSS -->
-        <link href="./css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- Custom styles for this template -->
-        <link href="./css/floating-labels.css" rel="stylesheet">
-        <script src="./js/jquery-3.3.1.slim.min.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
-
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom styles for this template -->
+    <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
 
     <jsp:include page="./menu/menu.jsp"></jsp:include>
         <div class="container">
-            <h1 class="h1 mb-3 font-weight-normal" style="text-align: center">Supplier Details</h1>
-            <br>
+            <h1 class="h1 mb-3 font-weight-normal" style="text-align: center">Auction Details</h1>
+            <br><br><br>
             <table class="table table-striped" id="show">
-                <th>
-                    Supplier ID
-                </th>
-                <th>
-                    Name
-                </th>                
-                <th>
-                    Username
-                </th>
-                <th>
-                    Status
-                </th>
-                <th>
-                    Organization 
-                </th>
-                          
-
-
                 <tr>
+                <s:iterator  value="auctionData">
                     <td>
-                        <input name="name" type="text" id="id" class="form-control" value="${supplier.suppId}" readonly/>
-                </td> 
-                <td>
-                    <input name="name" type="text" id="name" class="form-control" value="${supplier.suppName}" readonly/>
-                </td> 
-                <td>
-                    <input name="name" type="text" id="username" class="form-control" value="${supplier.username}" readonly/>
-                </td>
-                <td>
-                    <input name="name" type="text" id="status" class="form-control" value="${supplier.status}" readonly/>
-                </td>
-                <td>
-                    <input name="address" type="text" id="contact" class="form-control" value="${supplier.orgName}" readonly/>
-                </td>
-                                    
-            </tr>           
-            <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"></h4>
+                        <div class="text-center mb-3">
+                            <form class="form-signin" action="getAuction" method="post">
+                                <div class="form-control">                                    
+                                    <label for="inputEmail" class="sr-only">Auction Type</label>
+                                    <input name="auctionType" type="text" id="auctionType" class="form-control" value="Type: <s:property value="auctionType"/>"  readonly>
+                                    <label for="inputEmail" class="sr-only">Product Name</label>
+                                    <input name="productName" type="text" id="productName" class="form-control" value="Product name: <s:property value="productName"/>"  readonly>
+                                    <label for="inputEmail" class="sr-only">Auction Date</label>
+                                    <input name="auctionDate" type="text" id="auctionDate" class="form-control" value="Date: <s:property value="auctionDate"/>"  readonly>
+                                    <input name="auctionId" type="hidden" id="auctionId" class="form-control" value="<s:property value="auctionId"/>"  readonly>             
+                                    <input name="productId" type="hidden" id="productId" class="form-control" value="<s:property value="productId"/>"  readonly>
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Start Bid</button>
+                                    <br>
+                                </div>
+                            </form>
                         </div>
-                        <div class="modal-body" id="show">
-
-                        </div>                                
-                    </div>
-                </div>
-            </div>
+                    </td>
+                </s:iterator>
+            </tr>
         </table>
-        <div style="width:200px;margin: auto">
-            <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal" onclick="editUser(${supplier.suppId})">Edit Details</button> 
-            
-        </div>
-            
-            
-    </div>   
-    <script>
-        function editUser(suppId) {
-            jQuery.ajax({
-                url: "GetSupplier?id=" + suppId,
-                success: function (result) {
-                    $("#show").html(result);
-                    $("#myModal").show();
-                }});
-        }
-    </script>
+    </div>
     <!--    <script type="text/javascript">
              $(document).on("click", "#callData", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
                     $.post("GetEmployee?employeeId=1", function(responseText) {   // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
@@ -131,6 +86,8 @@
         });
     </script>
     <script>
+
+
         function fnExcelReport()
         {
             var tab_text = "<table border='2px'><tr bgcolor='#87AFC6'>";
@@ -165,7 +122,8 @@
 
     </script>
     <!-- jQuery library -->
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="./js/popper.min.js"></script>
 

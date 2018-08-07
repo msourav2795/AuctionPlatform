@@ -15,6 +15,7 @@ public class Login extends ActionSupport {
 
     private Bidders tempBidder;
     private Suppliers tempSupplier;
+    private Admin tempAdmin;
     private String username;
     private String password;
     private String checkRoleName;
@@ -42,6 +43,16 @@ public class Login extends ActionSupport {
                 setTempSupplier(temp);
                 System.out.println(temp.getSuppId());
                 res = "Supplier";
+            }
+        }
+        else if(this.checkRoleName.equals("Admin")) {
+            System.out.println("in Login" + this.checkRoleName);
+            Admin temp = new Admin();
+            temp = temp.loginAdmin(this.getUsername(), this.getPassword());
+            //  System.out.println(temp.getId() + "tempbidder");
+            if (temp.getAcId() != 0) {
+                setTempAdmin(temp);
+                res = "Admin";
             }
         }
         return res;
@@ -115,6 +126,27 @@ public class Login extends ActionSupport {
      */
     public void setTempSupplier(Suppliers tempSupplier) {
         this.tempSupplier = tempSupplier;
+    }
+
+    /**
+     * @return the tempAdmin
+     */
+    public Admin getTempAdmin() {
+        return tempAdmin;
+    }
+
+    /**
+     * @param tempAdmin the tempAdmin to set
+     */
+    public void setTempAdmin(AuctionController tempAdmin) {
+        this.setTempAdmin(tempAdmin);
+    }
+
+    /**
+     * @param tempAdmin the tempAdmin to set
+     */
+    public void setTempAdmin(Admin tempAdmin) {
+        this.tempAdmin = tempAdmin;
     }
 
 }

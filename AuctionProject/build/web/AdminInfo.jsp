@@ -4,7 +4,7 @@
     Author     : techcluster001
 --%>
 
-<%@page import="com.tc.dto.Bidders"%>
+<%@page import="com.tc.dto.Admin"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>  
@@ -19,7 +19,7 @@
     <meta name="author" content="">
     <link rel="icon" href="./images/favicon.ico">
 
-    <title>Bidder Info</title>
+    <title>Admin Info</title>
 
     <!-- Bootstrap core CSS -->
         <link href="./css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +40,7 @@
             <br>
             <table class="table table-striped" id="show">
                 <th>
-                    Bidder ID
+                    Admin ID
                 </th>
                 <th>
                     Name
@@ -49,35 +49,24 @@
                     Username
                 </th>
                 <th>
-                    Status
-                </th>
-                <th>
-                    Contact
-                </th>
-                <th>
-                    Address
+                    Bu
                 </th>               
 
 
                 <tr>
                     <td>
-                        <input name="name" type="text" id="id" class="form-control" value="${bidder.id}" readonly/>
+                        <input name="acId" type="text" id="acId" class="form-control" value="${admin.acId}" readonly/>
                 </td> 
                 <td>
-                    <input name="name" type="text" id="name" class="form-control" value="${bidder.name}" readonly/>
+                    <input name="acName" type="text" id="acName" class="form-control" value="${admin.acName}" readonly/>
                 </td> 
                 <td>
-                    <input name="name" type="text" id="username" class="form-control" value="${bidder.username}" readonly/>
+                    <input name="username" type="text" id="username" class="form-control" value="${admin.username}" readonly/>
                 </td>
                 <td>
-                    <input name="name" type="text" id="status" class="form-control" value="${bidder.status}" readonly/>
+                    <input name="bu" type="text" id="bu" class="form-control" value="${admin.bu}" readonly/>
                 </td>
-                <td>
-                    <input name="address" type="text" id="contact" class="form-control" value="${bidder.contact}" readonly/>
-                </td>
-                <td>
-                    <input name="contact" type="text" id="address" class="form-control" value="${bidder.address}" readonly/>
-                </td>                        
+                                       
             </tr>           
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog modal-lg">
@@ -94,16 +83,16 @@
             </div>
         </table>
         <div style="width:400px;margin: auto">
-            <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal" onclick="editUser(${bidder.id})">Edit Details</button> 
+            <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal" onclick="editUser(${admin.acId})">Edit Details</button> 
             <a class="btn btn-primary btn-lg" href="auctionDetail" role="button">Go to Auction Page &raquo;</a>
         </div>
             
             
     </div>   
     <script>
-        function editUser(bidderId) {
+        function editUser(acId) {
             jQuery.ajax({
-                url: "GetBidder?id=" + bidderId,
+                url: "GetBidder?id=" + acId,
                 success: function (result) {
                     $("#show").html(result);
                     $("#myModal").show();

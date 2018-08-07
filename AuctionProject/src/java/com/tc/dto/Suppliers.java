@@ -45,10 +45,25 @@ public class Suppliers {
             this.setIsLoggedIn(true);
             setSession(ActionContext.getContext().getSession());
             getSession().put("supplier", supplier);
-            System.out.println("abcdef in supplier login check inside output  " + supplier.getSuppName());
+            //System.out.println("abcdef in supplier login check inside output  " + supplier.getSuppName());
         }
         // System.out.println("abcdef in supplier login check  "+this.getSuppName());
         return supplier;
+    }
+    
+    public String logOff() {
+
+        String forward = "failure";
+        //String empName = String.valueOf(this.getEmployeeName());
+        session = ActionContext.getContext().getSession();
+        if (session == null) {
+            forward = "success";
+        } else if (session.containsKey("supplier")) {
+            session.remove("supplier");
+            forward = "success";
+        }
+
+        return forward;
     }
 
     /**

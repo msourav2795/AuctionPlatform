@@ -34,8 +34,6 @@ public class Bidders extends ActionSupport {
 
     public Bidders loginBidders(String username, String password) {
         String res = "failure";
-        System.out.println("milan is the ");
-        System.out.println(this.checkRoleName);
         Bidders bidder = new Bidders();
         boolean output = BidderDao.validateBidders(username, password);
         if (output == true) {
@@ -51,7 +49,7 @@ public class Bidders extends ActionSupport {
             this.setContact(bidder.getContact());
             this.setIsLoggedIn(true);
             setSession(ActionContext.getContext().getSession());
-            getSession().put("user", bidder);
+            getSession().put("bidder", bidder);
         }
         return bidder;
     }
@@ -156,8 +154,8 @@ public class Bidders extends ActionSupport {
         session = ActionContext.getContext().getSession();
         if (session == null) {
             forward = "success";
-        } else if (session.containsKey("user")) {
-            session.remove("user");
+        } else if (session.containsKey("bidder")) {
+            session.remove("bidder");
             forward = "success";
         }
 

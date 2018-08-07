@@ -13,6 +13,7 @@ public class Products {
     private int pdId;
     private int suppId;
     private String pdName;
+    private Inventory inventory;
 
     /**
      * @return the pdId
@@ -54,6 +55,20 @@ public class Products {
      */
     public void setPdName(String pdName) {
         this.pdName = pdName;
+    }
+
+    /**
+     * @return the inventory
+     */
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    /**
+     * @param inventory the inventory to set
+     */
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
     
 }

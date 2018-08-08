@@ -73,7 +73,11 @@
             <result name="failure">Failure.jsp</result>
         </action> 
         <action name="getAdminAuction" class="com.tc.dto.AuctionController" method="showAllAuctions">
-            <result name="success">adminPage.jsp</result>
+            <result name="success">AdminAuctionInfo.jsp</result>
+            <result name="failure">Failure.jsp</result>
+        </action>
+        <action name="getProductByAuctionId" class="com.tc.dto.Auction" method="getProductByAuction">
+            <result name="success">AuctionProductPage.jsp</result>
             <result name="failure">Failure.jsp</result>
         </action>
             

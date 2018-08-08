@@ -3,17 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/MjunctionProject/AuctionProject/src/java/com/tc/dto/Login.java</file>
+            <file>file:/D:/MjunctionProject/AuctionProject/src/java/com/tc/dao/AuctionDao.java</file>
             <file>file:/D:/MjunctionProject/AuctionProject/src/java/struts.xml</file>
-            <file>file:/D:/MjunctionProject/AuctionProject/web/BiddersInfo.jsp</file>
             <file>file:/D:/MjunctionProject/AuctionProject/src/java/com/tc/dto/Suppliers.java</file>
-            <file>file:/D:/MjunctionProject/AuctionProject/web/AdminInfo.jsp</file>
             <file>file:/D:/MjunctionProject/AuctionProject/src/java/com/tc/dao/AdminDao.java</file>
-            <file>file:/D:/MjunctionProject/AuctionProject/src/java/com/tc/dto/Admin.java</file>
-            <file>file:/D:/MjunctionProject/AuctionProject/src/java/com/tc/dao/SupplierDao.java</file>
-            <file>file:/D:/MjunctionProject/AuctionProject/src/java/com/tc/dao/BidderDao.java</file>
+            <file>file:/D:/MjunctionProject/AuctionProject/web/AuctionProductPage.jsp</file>
+            <file>file:/D:/MjunctionProject/AuctionProject/src/java/com/tc/dto/AuctionController.java</file>
+            <file>file:/D:/MjunctionProject/AuctionProject/src/java/com/tc/dto/Products.java</file>
+            <file>file:/D:/MjunctionProject/AuctionProject/web/AdminAuctionInfo.jsp</file>
             <file>file:/D:/MjunctionProject/AuctionProject/src/java/com/tc/dto/Auction.java</file>
-            <file>file:/D:/MjunctionProject/AuctionProject/web/menu/menu.jsp</file>
         </group>
     </open-files>
 </project-private>

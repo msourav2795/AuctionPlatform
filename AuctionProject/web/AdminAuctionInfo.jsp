@@ -4,9 +4,10 @@
     Author     : msour
 --%>
 
+
 <%@page import="com.tc.dto.AuctionController"%>
 <%@page import="java.util.ArrayList"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s" %>  
 <!DOCTYPE html>
 
@@ -32,41 +33,31 @@
 
 
     <jsp:include page="./menu/menu.jsp"></jsp:include>
-
-        <div class="container-fluid" style="margin-top:250px">
-            <h1 class="h3 mb-3 font-weight-normal">All Auction Details</h1>
-
-
-            <form class="form-signin" action="getAdminAuction" method="post">
-
-                <br>
-                <h2></h2>
-           <s:iterator  value="auctionList">
-            <form class="form-signin" action="getAuction" method="post">
-                
-                <br>
-                <h2></h2>
-
-                <label for="inputEmail" class="sr-only">Auction Id</label>
-                <input name="auctionType" type="text" id="auctionType" class="form-control" value="Type: <s:property value='auctionId'/>"  readonly>
-                <label for="inputEmail" class="sr-only">Auction Type</label>
-                <input name="productName" type="text" id="productName" class="form-control" value="BU : <s:property value="type"/>"  readonly>
-                <label for="inputEmail" class="sr-only">Auction Date</label>
-                <input name="auctionDate" type="text" id="auctionDate" class="form-control" value="Date: <s:property value="date"/>"  readonly>
-                <input name="auctionId" type="hidden" id="auctionId" class="form-control" value="<s:property value="suppId"/>"  readonly>                         
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Get Products</button>
-                <br>
-                
-            </form>
-            </s:iterator>
-
-        </form>
-
-
-
-
-
-
+        <div class="container">
+            <h1 class="h1 mb-3 font-weight-normal" style="text-align: center">Auction Details</h1>
+            <br><br><br>
+            <table class="table table-striped" id="show">
+                <tr>
+                <s:iterator  value="auctionList">
+                    <td>
+                        <div class="text-center mb-3">
+                            <form class="form-signin" action="getProductByAuctionId" method="post">
+                                <div class="form-control">                                    
+                                    <label for="inputEmail" class="sr-only">Auction Id</label>
+                                    <input name="auctionId" type="text" id="auctionId" class="form-control" value="Auction Id : <s:property value="auctionId"/>"  readonly>
+                                    <label for="inputEmail" class="sr-only">Auction Type</label>
+                                    <input name="type" type="text" id="type" class="form-control" value="Type : <s:property value="type"/>"  readonly>
+                                    <label for="inputEmail" class="sr-only">Auction Date</label>
+                                    <input name="date" type="text" id="date" class="form-control" value="Date : <s:property value="date"/>"  readonly>
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Get Products</button>
+                                    <br>
+                                </div>
+                            </form>
+                        </div>
+                    </td>
+                </s:iterator>
+            </tr>
+        </table>
     </div>
     <!--    <script type="text/javascript">
              $(document).on("click", "#callData", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...

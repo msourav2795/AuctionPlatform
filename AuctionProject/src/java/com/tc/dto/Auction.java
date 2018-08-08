@@ -7,7 +7,9 @@ package com.tc.dto;
 
 import com.opensymphony.xwork2.ActionSupport;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import com.tc.dao.AuctionDao;
 import com.tc.dao.BidderDao;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 public class Auction extends ActionSupport{
@@ -16,6 +18,7 @@ public class Auction extends ActionSupport{
     private int status;
     private String type;
     private Date date;
+    private ArrayList<Products> products;
     
     
     private ArrayList<AuctionProduct> auctionData;
@@ -28,6 +31,15 @@ public class Auction extends ActionSupport{
             setAuctionData(data);
             res="success";
         }
+        return res;
+    }
+    
+    public String getProductByAuction() throws SQLException{
+        String res="success";
+        int auctionId=this.auctionId;
+        System.out.println("Entered");
+        setProducts(AuctionDao.getProducts(auctionId));
+        System.out.println("Entered");
         return res;
     }
     /**
@@ -113,5 +125,24 @@ public class Auction extends ActionSupport{
     public void setAuctionData(ArrayList<AuctionProduct> auctionData) {
         this.auctionData = auctionData;
     }
+
+    /**
+     * @return the products
+     */
+    public ArrayList<Products> getProducts() {
+        return products;
+    }
+
+    /**
+     * @param products the products to set
+     */
+    public void setProducts(ArrayList<Products> products) {
+        this.products = products;
+    }
+
+    /**
+     * @return the products
+     */
+   
 }
 
